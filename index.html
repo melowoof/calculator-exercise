@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <!-- <script src="script.js" defer></script> -->
+    <script src="script.js" defer></script>
     <title>Calculator</title>
   </head>
   <body>
@@ -12,7 +12,23 @@
       <div class="left-side">
         <div class="monitor-container">
           <div class="monitor-second-container">
-            <div class="monitor">abc def hijk</div>
+            <div class="monitor" id="monitor">
+              <!-- <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li> -->
+              <li class="line"><p>18 + 3</p></li>
+              <li class="output"><p>21</p></li>
+              <li class="line"><p>21 + 8</p></li>
+              <li class="output"><p>29</p></li>
+              <li class="line"><p>29 / 7 * 3</p></li>
+              <li class="output"><p>9</p></li>
+              <!-- <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li>
+              <li class="line"><p>hi hi</p></li> -->
+            </div>
           </div>
         </div>
         <div class="monitor-padding"></div>
@@ -20,7 +36,14 @@
       <div class="calculator-container">
         <div class="calculator">
           <div class="buttons-container-decoration">
-            <ul class="buttons-container">
+            <div class="buttons-container">
+              <div class="buttons-container-top">
+                <div class="button-container-inner-decoration">
+                  <li class="button" id="tab"><button>TAB</button></li>
+                  <li class="button" id="percent"><button>%</button></li>
+                  <li class="button" id="clear"><button>←</button></li>
+                </div>
+              </div>
               <div class="button-container-inner-decoration">
                 <div class="buttons-container-left">
                   <li class="button" id="del"><button>DEL</button></li>
@@ -40,13 +63,13 @@
                     <li class="button" id="dot"><button>.</button></li>
                   </div>
                 </div>
+                <div class="buttons-container-right">
+                  <li class="button" id="minus"><button>-</button></li>
+                  <li class="button" id="plus"><button>+</button></li>
+                  <li class="button" id="enter"><button>↩︎</button></li>
+                </div>
               </div>
-              <div class="buttons-container-right">
-                <li class="button" id="minus"><button>-</button></li>
-                <li class="button" id="plus"><button>+</button></li>
-                <li class="button" id="enter"><button>E</button></li>
-              </div>
-            </ul>
+            </div>
           </div>
         </div>
       </div>

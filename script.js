@@ -1,6 +1,9 @@
 let firstNum;
 let secondNum;
 let operator;
+const monitor = document.querySelector("#monitor");
+
+function display() {}
 
 function operate(firstNum, secondNum, operator) {
   switch (operator) {

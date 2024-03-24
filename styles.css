@@ -25,7 +25,7 @@ body {
   gap: 25px;
 }
 
-ul {
+li {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -59,7 +59,8 @@ ul {
 }
 
 .monitor {
-  color: #b1843d;
+  border: 10px solid;
+  border-color: #494743 #847c68 #6d6653;
   padding: 4px 8px;
   background-color: #362410;
   width: 300px;
@@ -67,7 +68,21 @@ ul {
   border-radius: 2px;
   box-shadow: inset -2px -2px 10px black, inset 2px 2px 3px black;
   filter: contrast(90%) brightness(95%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+}
+
+.line p {
+  color: #b1843d;
+  text-shadow: 0 0 5px rgba(177, 100, 61, 0.8), 0 0 10px rgba(177, 132, 61, 0.5);
+}
+
+.output {
+  color: #b1843d;
+  align-self: flex-end;
+  text-shadow: 0 0 5px rgba(177, 100, 61, 0.8), 0 0 10px rgba(177, 132, 61, 0.5);
 }
 
 .calculator {
@@ -108,6 +123,7 @@ ul {
   border-radius: 3px;
   padding: 10px;
   display: flex;
+  flex-direction: column;
   box-shadow: inset -1px -1px 1px var(--shadow), inset 1px 0px 1px var(--shadow);
   gap: 5px;
 }
@@ -115,6 +131,16 @@ ul {
 .button-container-inner-decoration {
   box-shadow: inset 0px 0px 4px black;
   border-radius: 3px;
+  display: flex;
+  gap: 5px;
+  padding-bottom: 2px;
+}
+
+.buttons-container-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-bottom: 10px;
 }
 
 .buttons-container-left {
@@ -144,7 +170,7 @@ ul {
 
 #enter button,
 #del button {
-  background-color: #ee7968;
+  background-color: #ee7a68e8;
   border-radius: 5px;
   /* border: 1px solid; */
   /* border-color: ; */
@@ -173,4 +199,9 @@ ul {
 
 #dot {
   /* flex: 1; */
+}
+
+button:active {
+  /* text-shadow: 0.5px 0.5px 0px var(--shadow); */
+  transform: translateY(1px);
 }
