@@ -59,7 +59,7 @@ li {
 }
 
 .monitor {
-  border: 10px solid;
+  border: 11px solid;
   border-color: #494743 #847c68 #6d6653;
   padding: 4px 8px;
   background-color: #362410;
@@ -74,7 +74,7 @@ li {
   /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
 }
 
-.line p {
+.input {
   color: #b1843d;
   text-shadow: 0 0 5px rgba(177, 100, 61, 0.8), 0 0 10px rgba(177, 132, 61, 0.5);
 }
@@ -158,18 +158,18 @@ li {
   flex-direction: column;
 }
 
-#plus,
-#enter {
+#li-add,
+#li-enter {
   flex: 2;
 }
 
-#plus button,
-#enter button {
+#li-add button,
+#li-enter button {
   height: 100%;
 }
 
-#enter button,
-#del button {
+#li-enter button,
+#li-del button {
   background-color: #ee7a68e8;
   border-radius: 5px;
   /* border: 1px solid; */
@@ -189,16 +189,12 @@ li {
   height: 55px;
 }
 
-#num0 {
+#li-num0 {
   flex: 2;
 }
 
-#num0 button {
+#li-num0 button {
   width: 100%;
-}
-
-#dot {
-  /* flex: 1; */
 }
 
 button:active {

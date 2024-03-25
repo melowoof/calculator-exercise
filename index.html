@@ -18,12 +18,13 @@
               <li class="line"><p>hi hi</p></li>
               <li class="line"><p>hi hi</p></li>
               <li class="line"><p>hi hi</p></li> -->
-              <li class="line"><p>18 + 3</p></li>
-              <li class="output"><p>21</p></li>
-              <li class="line"><p>21 + 8</p></li>
-              <li class="output"><p>29</p></li>
-              <li class="line"><p>29 / 7 * 3</p></li>
-              <li class="output"><p>9</p></li>
+              <!-- <li class="input">18 + 3</li>
+              <li class="output">21</li>
+              <li class="input">21 + 8</li>
+              <li class="output">29</li>
+              <li class="input">29 ÷ 7</li>
+              <li class="output">9</li> -->
+              <li class="output">29</li>
               <!-- <li class="line"><p>hi hi</p></li>
               <li class="line"><p>hi hi</p></li>
               <li class="line"><p>hi hi</p></li>
@@ -36,37 +37,45 @@
       <div class="calculator-container">
         <div class="calculator">
           <div class="buttons-container-decoration">
-            <div class="buttons-container">
+            <div class="buttons-container" id="numpad">
               <div class="buttons-container-top">
                 <div class="button-container-inner-decoration">
-                  <li class="button" id="tab"><button>TAB</button></li>
+                  <li class="button" id="tab"><button>+/−</button></li>
                   <li class="button" id="percent"><button>%</button></li>
                   <li class="button" id="clear"><button>←</button></li>
                 </div>
               </div>
               <div class="button-container-inner-decoration">
                 <div class="buttons-container-left">
-                  <li class="button" id="del"><button>DEL</button></li>
-                  <li class="button" id="divide"><button>/</button></li>
-                  <li class="button" id="multiply"><button>*</button></li>
-                  <li class="button" id="num7"><button>7</button></li>
-                  <li class="button" id="num8"><button>8</button></li>
-                  <li class="button" id="num9"><button>9</button></li>
-                  <li class="button" id="num4"><button>4</button></li>
-                  <li class="button" id="num5"><button>5</button></li>
-                  <li class="button" id="num6"><button>6</button></li>
-                  <li class="button" id="num1"><button>1</button></li>
-                  <li class="button" id="num2"><button>2</button></li>
-                  <li class="button" id="num3"><button>3</button></li>
+                  <li class="button" id="li-del">
+                    <button id="del">DEL</button>
+                  </li>
+                  <li class="button"><button id="divide">÷</button></li>
+                  <li class="button"><button id="multiply">×</button></li>
+                  <li class="button"><button id="num7">7</button></li>
+                  <li class="button"><button id="num8">8</button></li>
+                  <li class="button"><button id="num9">9</button></li>
+                  <li class="button"><button id="num4">4</button></li>
+                  <li class="button"><button id="num5">5</button></li>
+                  <li class="button"><button id="num6">6</button></li>
+                  <li class="button"><button id="num1">1</button></li>
+                  <li class="button"><button id="num2">2</button></li>
+                  <li class="button"><button id="num3">3</button></li>
                   <div class="buttons-container-bottom">
-                    <li class="button" id="num0"><button>0</button></li>
-                    <li class="button" id="dot"><button>.</button></li>
+                    <li class="button" id="li-num0">
+                      <button id="num0">0</button>
+                    </li>
+                    <li class="button"><button id="dot">.</button></li>
                   </div>
                 </div>
                 <div class="buttons-container-right">
-                  <li class="button" id="minus"><button>-</button></li>
-                  <li class="button" id="plus"><button>+</button></li>
-                  <li class="button" id="enter"><button>↩︎</button></li>
+                  <li class="button"><button id="subtract">−</button></li>
+                  <li class="button" id="li-add">
+                    <button id="add">+</button>
+                  </li>
+                  <li class="button" id="li-enter">
+                    <button id="enter">↩︎</button>
+                  </li>
                 </div>
               </div>
             </div>
