@@ -10,6 +10,7 @@ numpad.addEventListener("click", function (event) {
 
   switch (target.id) {
     case "enter":
+      operateAndDisplay();
       break;
 
     case "clear":
@@ -90,6 +91,14 @@ numpad.addEventListener("click", function (event) {
   }
 });
 
+function operateAndDisplay() {
+  if (firstNum && secondNum && operator) {
+    const result = operate(firstNum, secondNum, operator);
+    writeToOutput(result);
+    console.log(result);
+  }
+}
+
 function handleOperator(op) {
   const lastNode = monitor.querySelector("li:last-child");
 
@@ -146,14 +155,14 @@ function updateDisplay(input) {
   const lastNode = monitor.querySelector("li:last-child");
 
   if (!lastNode) {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
 
     li.classList.add("input");
 
     monitor.appendChild(li);
     writeToInput(input);
   } else if (lastNode.classList.contains("output")) {
-    let li = document.createElement("li");
+    const li = document.createElement("li");
 
     li.classList.add("input");
 
@@ -177,9 +186,11 @@ function updateDisplay(input) {
 //   }
 // }
 
-function writeToOutput(input) {
-  const outputNode = monitor.querySelector("li.output:last-child");
-  outputNode.textContent = input;
+function writeToOutput(output) {
+  const outputNode = document.createElement("li");
+  outputNode.classList.add("output");
+  outputNode.textContent = output;
+  monitor.appendChild(outputNode);
 }
 
 function writeToInput(input) {
@@ -189,7 +200,13 @@ function writeToInput(input) {
 }
 
 function operate(a, b, op) {
-  operator = null;
+  operator = "";
+  firstNum = "";
+  secondNum = "";
+  currentInput = "first";
+
+  a = parseInt(a, 10);
+  b = parseInt(b, 10);
 
   switch (op) {
     case "add":

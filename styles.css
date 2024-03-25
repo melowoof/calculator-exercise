@@ -99,11 +99,15 @@ li {
 .calculator button {
   /* outline: 1px solid red; */
   /* color: red; */
+  /* color: #444; */
   min-height: 45px;
   min-width: 45px;
   font-size: 1.2rem;
   border-radius: 5px;
-  box-shadow: 0px 1px 1px var(--shadow);
+  text-shadow: 0.5px 0.5px 0 #999, 0.5px 0.5px 0 #888,
+    0.5px 0.5px 0 var(--shadow);
+  box-shadow: 0px 2.5px 1px var(--shadow), inset -1px -1px 1px var(--shadow),
+    inset 1px 0px 1px var(--shadow);
 }
 
 .button {
