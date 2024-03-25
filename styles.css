@@ -51,26 +51,6 @@ li {
     inset 0px 10px 1px var(--shadow); */
 }
 
-.monitor::before,
-.monitor::after {
-  content: "";
-  display: block;
-  width: 39px;
-  height: 40px;
-  background: linear-gradient(to right, #0004 65%, #0008 80%);
-  position: absolute;
-  top: 50px;
-}
-
-.monitor::before {
-  left: -39px;
-}
-
-.monitor::after {
-  right: -39px;
-  transform: rotate(180deg);
-}
-
 .monitor-second-container {
   /* outline: 0.0w1px solid black; */
   background-color: #2b2b29;
@@ -111,6 +91,26 @@ li {
   /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
 }
 
+.monitor::before,
+.monitor::after {
+  content: "";
+  display: block;
+  width: 39px;
+  height: 40px;
+  background: linear-gradient(to right, #0004 65%, #0008 80%);
+  position: absolute;
+  top: 50px;
+}
+
+.monitor::before {
+  left: -39px;
+}
+
+.monitor::after {
+  right: -39px;
+  transform: rotate(180deg);
+}
+
 .input {
   /* color: #b1843d;
   text-shadow: 0 0 5px rgba(177, 100, 61, 0.8), 0 0 10px rgba(177, 132, 61, 0.5); */
@@ -139,9 +139,12 @@ li {
   /* outline: 1px solid red; */
   /* color: red; */
   /* color: #444; */
-  min-height: 45px;
-  min-width: 45px;
-  font-size: 1.2rem;
+  /* border: none; */
+  border-color: #2a2015 #473e2f #514c40;
+  background-color: #e3e8e1;
+  height: 45px;
+  width: 45px;
+  font-size: 1rem;
   border-radius: 5px;
   text-shadow: 0.5px 0.5px 0 #999, 0.5px 0.5px 0 #888,
     0.5px 0.5px 0 var(--shadow);
