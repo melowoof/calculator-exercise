@@ -44,11 +44,31 @@ li {
   border-radius: 3px;
   padding: 8px 6px 15px;
   /* height: 350px; */
-  /* background-color: #e5cea3; */
+  background-color: #e5cea3;
   background-color: #191917;
   /* box-shadow: 1px 1px 1px var(--shadow), inset 8px 0px 1px var(--shadow),
     1px 1px 5px var(--shadow), inset -8px -20px 1px var(--shadow),
     inset 0px 10px 1px var(--shadow); */
+}
+
+.monitor::before,
+.monitor::after {
+  content: "";
+  display: block;
+  width: 39px;
+  height: 40px;
+  background: linear-gradient(to right, #0004 65%, #0008 80%);
+  position: absolute;
+  top: 50px;
+}
+
+.monitor::before {
+  left: -39px;
+}
+
+.monitor::after {
+  right: -39px;
+  transform: rotate(180deg);
 }
 
 .monitor-second-container {
@@ -127,11 +147,6 @@ li {
     0.5px 0.5px 0 var(--shadow);
   box-shadow: 0px 2.5px 1px var(--shadow), inset -1px -1px 1px var(--shadow),
     inset 1px 0px 1px var(--shadow);
-}
-
-.button {
-  /* box-shadow: inset 0px -4px 10px var(--shadow),
-    inset 0px 1px 10px var(--shadow); */
 }
 
 .buttons-container-decoration {

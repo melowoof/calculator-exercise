@@ -1,7 +1,9 @@
 let firstNum = "";
 let secondNum = "";
 let operator = "";
+let operatorSign = "";
 let currentInput = "first";
+let dotValue = false;
 const monitor = document.querySelector("#monitor");
 const numpad = document.querySelector("#numpad");
 
@@ -10,16 +12,19 @@ numpad.addEventListener("click", function (event) {
 
   switch (target.id) {
     case "enter":
-      operateAndDisplay();
+      operateAndDisplay(firstNum, secondNum, operator);
       break;
 
     case "backspace":
+      backspace();
       break;
 
     case "negative":
+      negative();
       break;
 
     case "percent":
+      percent();
       break;
 
     case "clear":
@@ -83,23 +88,103 @@ numpad.addEventListener("click", function (event) {
       break;
 
     case "dot":
+      dot();
       break;
+
+    // default:
+    //   console.log("default");
   }
 });
+
+function backspace() {
+  if (secondNum) {
+    if (secondNum.slice(-1) === ".") {
+      dotValue = false;
+      secondNum = secondNum.slice(0, -1);
+      writeToInput();
+    } else {
+      secondNum = secondNum.slice(0, -1);
+      writeToInput();
+    }
+  } else if (operator && !secondNum) {
+    operator = "";
+    operatorSign = "";
+    currentInput = "first";
+    writeToInput();
+  } else {
+    if (firstNum.slice(-1) === ".") {
+      dotValue = false;
+      firstNum = firstNum.slice(0, -1);
+      writeToInput();
+    } else {
+      firstNum = firstNum.slice(0, -1);
+      writeToInput();
+    }
+  }
+}
+
+function resetValues() {
+  firstNum = "";
+  secondNum = "";
+  operator = "";
+  operatorSign = "";
+  currentInput = "first";
+  dotValue = false;
+}
+
+function negative() {
+  if (firstNum || secondNum) {
+    if (currentInput === "first") {
+      firstNum = -firstNum;
+      writeToInput();
+    } else {
+      if (secondNum) {
+        secondNum = -secondNum;
+        writeToInput();
+      }
+    }
+  }
+}
+
+function dot() {
+  if ((firstNum || secondNum) && !dotValue) {
+    if (currentInput === "first") {
+      dotValue = true;
+      inputNumber(".");
+    } else {
+      if (!secondNum) {
+        dotValue = true;
+        inputNumber("0.");
+      } else {
+        dotValue = true;
+        inputNumber(".");
+      }
+    }
+  }
+}
+
+function percent() {
+  if (firstNum && !secondNum && !operator) {
+    operateAndDisplay(firstNum, 100, "divide");
+  } else if (!firstNum) {
+    const lastNode = monitor.querySelector("li.output:last-child");
+    if (lastNode) {
+      firstNum = lastNode.textContent;
+      percent();
+    }
+  }
+}
 
 function clear() {
   while (monitor.firstChild) {
     monitor.removeChild(monitor.firstChild);
   }
-  firstNum = "";
-  secondNum = "";
-  operator = "";
-  currentInput = "first";
+  resetValues();
 }
 
-function operateAndDisplay() {
-  if (firstNum && secondNum && operator) {
-    const result = operate(firstNum, secondNum, operator);
+function operateAndDisplay(a, b, op) {
+  if (a && b && op) {
+    const result = operate(a, b, op);
 
     writeToOutput(roundNum(result));
   }
@@ -132,40 +217,42 @@ function handleOperator(op) {
 
   operator = op;
   currentInput = "second";
+  dotValue = false;
 
-  switch (op) {
+  switch (operator) {
     case "add":
-      writeToInput(" + ");
+      operatorSign = " + ";
       break;
 
     case "subtract":
-      writeToInput(" − ");
+      operatorSign = " − ";
       break;
 
     case "multiply":
-      writeToInput(" × ");
+      operatorSign = " × ";
       break;
 
     case "divide":
-      writeToInput(" ÷ ");
+      operatorSign = " ÷ ";
       break;
 
-    default:
-      break;
+    // default:
+    // break;
   }
+  writeToInput();
 }
 
 function inputNumber(input) {
   if (currentInput === "first") {
     firstNum += input;
-    updateDisplay(input);
+    updateDisplay();
   } else {
     secondNum += input;
-    updateDisplay(input);
+    updateDisplay();
   }
 }
 
-function updateDisplay(input) {
+function updateDisplay() {
   const lastNode = monitor.querySelector("li:last-child");
 
   if (!lastNode) {
@@ -174,16 +261,16 @@ function updateDisplay(input) {
     li.classList.add("input");
 
     monitor.appendChild(li);
-    writeToInput(input);
+    writeToInput();
   } else if (lastNode.classList.contains("output")) {
     const li = document.createElement("li");
 
     li.classList.add("input");
 
     monitor.appendChild(li);
-    writeToInput(input);
+    writeToInput();
   } else if (lastNode.classList.contains("input")) {
-    writeToInput(input);
+    writeToInput();
   }
 }
 
@@ -197,9 +284,11 @@ function writeToOutput(output) {
   }
 }
 
-function writeToInput(input) {
+function writeToInput() {
   const inputNode = monitor.querySelector("li.input:last-child");
-  inputNode.textContent += input;
+  // inputNode.textContent += input;
+  inputNode.textContent = `${firstNum} ${operatorSign} ${secondNum}`;
+
   while (monitor.childElementCount > 15) {
     monitor.removeChild(monitor.children[0]);
   }
@@ -207,13 +296,10 @@ function writeToInput(input) {
 }
 
 function operate(a, b, op) {
-  operator = "";
-  firstNum = "";
-  secondNum = "";
-  currentInput = "first";
+  resetValues();
 
-  a = parseInt(a, 10);
-  b = parseInt(b, 10);
+  a = parseFloat(a);
+  b = parseFloat(b);
 
   switch (op) {
     case "add":
