@@ -13,16 +13,17 @@ numpad.addEventListener("click", function (event) {
       operateAndDisplay();
       break;
 
-    case "clear":
+    case "backspace":
       break;
 
-    case "tab":
+    case "negative":
       break;
 
     case "percent":
       break;
 
-    case "del":
+    case "clear":
+      clear();
       break;
 
     case "add":
@@ -83,19 +84,32 @@ numpad.addEventListener("click", function (event) {
 
     case "dot":
       break;
-
-    // default:
-    //   console.log("hi");
-    //   display("2");
-    //   break;
   }
 });
+
+function clear() {
+  while (monitor.firstChild) {
+    monitor.removeChild(monitor.firstChild);
+  }
+  firstNum = "";
+  secondNum = "";
+  operator = "";
+  currentInput = "first";
+}
 
 function operateAndDisplay() {
   if (firstNum && secondNum && operator) {
     const result = operate(firstNum, secondNum, operator);
-    writeToOutput(result);
-    console.log(result);
+
+    writeToOutput(roundNum(result));
+  }
+}
+
+function roundNum(input) {
+  if (Number.isInteger(input)) {
+    return input;
+  } else {
+    return input.toFixed(7).replace(/\.?0+$/, "");
   }
 }
 
@@ -173,30 +187,23 @@ function updateDisplay(input) {
   }
 }
 
-// function display(input) {
-//   const lastNode = monitor.querySelector("li:last-child");
-
-//   if (lastNode.classList.contains("input")) {
-//     writeToInput(input);
-//   } else {
-//     let li = document.createElement("li");
-//     li.classList.add("input");
-//     monitor.appendChild(li);
-//     writeToInput(input);
-//   }
-// }
-
 function writeToOutput(output) {
   const outputNode = document.createElement("li");
   outputNode.classList.add("output");
   outputNode.textContent = output;
   monitor.appendChild(outputNode);
+  while (monitor.childElementCount > 15) {
+    monitor.removeChild(monitor.children[0]);
+  }
 }
 
 function writeToInput(input) {
   const inputNode = monitor.querySelector("li.input:last-child");
   inputNode.textContent += input;
-  console.log(`${firstNum} ${operator} ${secondNum}`);
+  while (monitor.childElementCount > 15) {
+    monitor.removeChild(monitor.children[0]);
+  }
+  // console.log(`${firstNum} ${operator} ${secondNum}`);
 }
 
 function operate(a, b, op) {
