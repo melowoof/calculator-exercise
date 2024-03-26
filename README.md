@@ -4,4 +4,4 @@ A rendition of Project: Calculator, as part of the Foundations course of The Odi
 
 **Live Preview** - [link](https://melowoof.github.io/odin-calculator/)
 
-**Site Preview** - ![Site Preview](image-1.png)
+**Site Preview** - ![site preview](image-2.png)
